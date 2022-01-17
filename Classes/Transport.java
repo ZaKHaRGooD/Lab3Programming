@@ -24,9 +24,9 @@ public class Transport implements ThingInterface {
 
     public void move() {
         if (moving) {
-            System.out.println("Транспорт '" + name + "' двигается");
+            System.out.println("Транспорт '" + name + "' двигается.");
         } else {
-            System.out.println("Транспорт '" + name + "' не двигается");
+            System.out.println("Транспорт '" + name + "' не двигается. Спустя время наши друщья поехали.");
         }
     }
 
@@ -40,28 +40,27 @@ public class Transport implements ThingInterface {
     }
 
     @Override
-    public String toString() {
-        return "Транспорт '" + name + "'";
-    }
-
-
-    // Don't forget to remove
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj instanceof Transport) {
-            return name.equals(((Transport) obj).name) && moving == ((Transport) obj).isMoving();
-        }
-        return false;
+    public boolean equals(Object otherObject) {
+        if (this == otherObject) return true;
+        if (otherObject == null) return false;
+        if (!(otherObject instanceof Transport)) return false;
+        Transport other = (Transport) otherObject;
+        return ((this.moving == other.moving) && (this.name.equals(other.name)));
     }
 
     @Override
     public int hashCode() {
-        if (moving) {
-            return name.hashCode() + name.length();
+        int result = name == null ? 0 : name.hashCode();
+        if (isMoving()) {
+            result = (31 * result) + name.length();
+            return result;
+        } else {
+            return result;
         }
-        return name.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "Транспорт '" + name + "'";
     }
 }
