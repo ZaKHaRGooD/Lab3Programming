@@ -65,7 +65,7 @@ public class Person implements PersonInterface {
     public boolean equals(Object otherObject) {
         if (this == otherObject) return true;
         if (otherObject == null) return false;
-        if (!(otherObject instanceof Person)) return false;
+        if (getClass() != otherObject.getClass()) return false;
         Person other = (Person) otherObject;
         return ((this.wasAbleGetAwayFromReckoning == other.wasAbleGetAwayFromReckoning) && (this.name.equals(other.name)));
     }

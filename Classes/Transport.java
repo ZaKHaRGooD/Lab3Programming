@@ -43,7 +43,7 @@ public class Transport implements ThingInterface {
     public boolean equals(Object otherObject) {
         if (this == otherObject) return true;
         if (otherObject == null) return false;
-        if (!(otherObject instanceof Transport)) return false;
+        if (getClass() != otherObject.getClass()) return false;
         Transport other = (Transport) otherObject;
         return ((this.moving == other.moving) && (this.name.equals(other.name)));
     }

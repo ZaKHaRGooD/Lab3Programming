@@ -67,7 +67,7 @@ public class CountryPeople extends Citizen {
     public boolean equals(Object otherObject) {
         if (this == otherObject) return true;
         if (otherObject == null) return false;
-        if (!(otherObject instanceof CountryPeople)) return false;
+        if (getClass() != otherObject.getClass()) return false;
         CountryPeople other = (CountryPeople) otherObject;
         return (this.name.equals(other.name) && (this.hearSoundOfEngine == other.hearSoundOfEngine) && (this.TYPE == other.TYPE));  // дописать
     }

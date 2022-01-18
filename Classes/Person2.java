@@ -29,7 +29,7 @@ public class Person2 implements PersonInterface {
     public boolean equals(Object otherObject) {
         if (this == otherObject) return true;
         if (otherObject == null) return false;
-        if (!(otherObject instanceof Person2)) return false;
+        if (getClass() != otherObject.getClass()) return false;
         Person2 other = (Person2) otherObject;
         return (this.name.equals(other.name));
     }
