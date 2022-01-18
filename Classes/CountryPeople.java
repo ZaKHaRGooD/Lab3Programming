@@ -36,12 +36,15 @@ public class CountryPeople extends Citizen {
     public void seeSomething(Transport transport, EmotionEnum TYPE) {
         System.out.println("'" + name + "'" + " увидели " + transport.toString() + ".");
         switch (TYPE) {
-            case FEAR -> System.out.println("'" + name + "'" + " испытали " + EmotionEnum.FEAR +
-                    ", поэтому они в страхе попятелись.");
-            case GLADNESS -> System.out.println("'" + name + "'" + " испытали " + EmotionEnum.GLADNESS +
-                    ", поэтому они с радостью пошли встречать " + transport.toString() + ".");
-            case SURPRISE -> System.out.println("'" + name + "'" + " испытали " + EmotionEnum.SURPRISE +
-                    ", поэтому они были в шоке от увиденного.");
+            case FEAR:
+                System.out.println("'" + name + "'" + " испытали " + EmotionEnum.FEAR + ", поэтому они в страхе попятелись.");
+                break;
+            case GLADNESS:
+                System.out.println("'" + name + "'" + " испытали " + EmotionEnum.GLADNESS + ", поэтому они с радостью пошли встречать " + transport.toString() + ".");
+                break;
+            case SURPRISE:
+                System.out.println("'" + name + "'" + " испытали " + EmotionEnum.SURPRISE + ", поэтому они были в шоке от увиденного.");
+                break;
         }
     }
 
