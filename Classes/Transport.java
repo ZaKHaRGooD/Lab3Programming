@@ -1,37 +1,31 @@
 package Classes;
 
+import Util.HaveLocation;
 import Util.ThingInterface;
 
-public class Transport implements ThingInterface {
+public class Transport implements HaveLocation, ThingInterface {
     private String name;
-    private boolean moving;
+    protected Location location;
+    protected boolean isNoisy;
 
-    public Transport() {
-        name = "Машина";
-        moving = true;
-        joinTheStory();
-    }
-
-    public Transport(String name) {
+    public Transport(String name, boolean isNoisy) {
         this.name = name;
-        moving = false;
-        joinTheStory();
+        this.isNoisy = isNoisy;
     }
 
-    private void joinTheStory() {
-        System.out.println("Транспорт '" + name + "' возник.");
+    @Override
+    public void changeLocation(String newLocation) {
+        location.changeLocation(newLocation);
+        System.out.println("Транспорт " + this.getName() + " поменял свою локацию на " + location.toString());
     }
 
-    public void move() {
-        if (moving) {
-            System.out.println("Транспорт '" + name + "' двигается.");
-        } else {
-            System.out.println("Транспорт '" + name + "' не двигается. Спустя время наши друщья поехали.");
-        }
+    public String getLocation() {
+        return location.getLocation();
     }
 
-    public boolean isMoving() {
-        return moving;
+    @Override
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     @Override
@@ -41,26 +35,23 @@ public class Transport implements ThingInterface {
 
     @Override
     public boolean equals(Object otherObject) {
-        if (this == otherObject) return true;
-        if (otherObject == null) return false;
-        if (getClass() != otherObject.getClass()) return false;
-        Transport other = (Transport) otherObject;
-        return ((this.moving == other.moving) && (this.name.equals(other.name)));
+        if (this == otherObject) {
+            return true;
+        }
+        if (otherObject == null || getClass() != otherObject.getClass()) {
+            return false;
+        }
+        Transport transport = (Transport) otherObject;
+        return (this.location == transport.location && this.name == transport.name && this.isNoisy && transport.isNoisy);
     }
 
     @Override
     public int hashCode() {
-        int result = name == null ? 0 : name.hashCode();
-        if (isMoving()) {
-            result = (31 * result) + name.length();
-            return result;
-        } else {
-            return result;
-        }
+        return name.hashCode();
     }
 
     @Override
     public String toString() {
-        return "Транспорт '" + name + "'";
+        return "Транспорт " + name;
     }
 }
