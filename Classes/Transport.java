@@ -54,7 +54,7 @@ public class Transport implements HaveLocation, ThingInterface {
             return false;
         }
         Transport transport = (Transport) otherObject;
-        return (this.location == transport.location && this.name.equals(transport.name) && this.isNoisy && transport.isNoisy);
+        return (this.name.equals(transport.name) && this.isNoisy && transport.isNoisy);
     }
 
     @Override
