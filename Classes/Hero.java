@@ -131,13 +131,15 @@ public class Hero extends Human {
             return false;
         }
         Hero hero = (Hero) otherObject;
-        return (this.feelings == hero.feelings && this.location == hero.location && this.getName() == hero.getName() && this.isRunOutOfHouse == hero.isRunOutOfHouse);
+        return (this.feelings == hero.feelings && this.location == hero.location && this.getName().equals(hero.getName()) && this.isRunOutOfHouse == hero.isRunOutOfHouse);
     }
 
-//    @Override
-//    public int hashCode() {
-//        return ;
-//    }
+    @Override
+    public int hashCode() {
+        int result = getName() == null ? 0 : getName().hashCode();
+        result += 31 * weight;
+        return result;
+    }
 
     @Override
     public String toString() {
