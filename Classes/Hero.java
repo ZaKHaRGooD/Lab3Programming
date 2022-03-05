@@ -137,6 +137,7 @@ public class Hero extends Human {
     @Override
     public int hashCode() {
         int result = getName() == null ? 0 : getName().hashCode();
+        result += 31 * location.hashCode();
         result += 31 * weight;
         return result;
     }
