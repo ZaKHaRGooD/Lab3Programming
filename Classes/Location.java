@@ -37,7 +37,9 @@ public class Location {
 
     @Override
     public int hashCode() {
-        return nameLocation.hashCode();
+        int result = nameLocation == null ? 0 : nameLocation.hashCode();
+        result += namePlace == null ? 0 : namePlace.hashCode() * 31;
+        return result;
     }
 
     @Override
