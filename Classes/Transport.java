@@ -59,7 +59,9 @@ public class Transport implements HaveLocation, ThingInterface {
 
     @Override
     public int hashCode() {
-        return getName() == null ? 0 : name.hashCode();
+        int result = getName() == null ? 0 : name.hashCode();
+        result += 31 * location.hashCode();
+        return result;
     }
 
     @Override
